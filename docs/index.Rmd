@@ -1,7 +1,7 @@
 ---
-title: "Your A4 Report Title (TODO: Revise title)"
-author: "Your Name"
-date: '2022-11-01'
+title: "Incarceration Trends in America"
+author: "Curt Tanaka"
+date: '2022-11-21'
 output: html_document
 ---
 
@@ -9,37 +9,71 @@ output: html_document
 source("../source/a4-helpers.R")
 source("../source/analysis.R")
 ```
-
-## Abstract 
-[TODO: Include a short abstract (about 50 words)]
-
-# Test (TODO: Remove before submission!!)
-```{r echo=FALSE}
-q1_string <- test_query1()
-num <- 5
+```{r setup, include=FALSE} 
+knitr::opts_chunk$set(warning = FALSE, message = FALSE) 
 ```
-As you know, this is a markdown report. The [R Markdown Cheatsheet](https://www.rstudio.com/wp-content/uploads/2015/02/rmarkdown-cheatsheet.pdf) is **useful!**
+## Abstract
 
-* Here's a test of a dynamic variable. Say **"`r q1_string`!!!** 
-* Here's another test. A vector
-of numbers: `r test_query2(num)`.
+By tacking incarceration across America by state, gender, race and other factors. We are able to use data analysis to identify trends and commonalities in the data that could potentially point to social issues which lead to the demographics represented in the US prison population. This research highlights the importance of how inequality can be shown geographically, racially, and yearly.
 
-Recall that _{r echo=TRUE}_ can be used to display the code, 
-which is very useful when developing and debugging a report. Here's an example: 
 
-```{r echo=TRUE}
-num <- 5
-sum <- sum(test_query2(num))
-print(sum)
+## Introduction
+
+In the United States Mass incarceration is a known and growing issue. By using data analysis it is revealed that the majority of people incarcerated are people of color, immigrants, and other people of the social "out" group in America, those economically challenged and other marginalized groups. In Data Feminism one of the principals is to challenge "unequal power structures" and to "work toward justice". The organization Vera exemplifies this notion as it brings attention to and actively fights the systemic injustice of the US prision/ legal system.
+
+In this data research there are many stakeholders, both direct and indirect which stand to gain from the data and its analysis. Direct stakeholders include prisoners, prison faculty, and government officials working in and around prisons. Indirect stake holders include data analysts and activitsts fighting to end the inequalities in prison population distribution.
+
+The key values in regards to which racial groups are most heavily incarcerated across America is summarized in this report. The prison populations at a federal and state level are also summarized. Along with this the trends over time which show the prevalence of racial groups is summarized and a map visualization showing which Indegenious peoples are being incarcerated by state across the US. 
+
+## Data Summary
+
+Across America certain racial groups occupy higher percentages of prison populations out of others in different states. Looking at which racial groups are most incarcerated in which states is important to understand the patterns of inequality in the prison system. 
+The state with the highest population of Black prisoners from 1970 to 2018 is `r highest_black_population()`. For Latinx prisoners and AAPI prisoners the highest populations were respectively, `r highest_latinx_population()` and `r highest_aapi_population()`. And for Native prisoners from 1970 to 2018 the state with the highest population was `r highest_native_population()`. What these data values show us is that to a large extent, concentration of a racial groups in jail relates to the amount of minority populations in a state. Specifically, the larger the minority population in that area the greater the likelihood that the minority group will be subject to the oppressive incarceration system. Additionally, in this time frame the state with the highest total population of White prisoners was `r highest_white_population()`. This connects back to the idea of population density, as well as the the idea that more the prevalence of a minority race in an area, the more likely they will be subject to the prison system. 
+
+## Growth of the U.S. Prison Population
+
+```{r, echo=FALSE}
+plot_jail_pop_for_us()
 ```
 
-## Introduction 
-[TODO]
 
-## Data Summary 
-[TODO]
+_The growth of United States jail populations from 1970 to 2018 from jurisdiction level data._
 
-[TODO ... other sections ... See Canvas for details]
 
-_All the very best with your work!_
+What is the general trend of United States jail populations from 1970 to 2018? The bar chart shows a general increase of total jail population in the United States for those years. This increase in jail population increased steadily from about 1980 to 2010, when after the total jail population steadied. 
 
+## Growth of Jail Populations by State
+
+```{r, echo=FALSE}
+plot_jail_pop_by_states(c("WA", "OR", "CA", "FL"))
+```
+
+
+_The growth of United States jail populations by selected states from 1970 to 2018._
+
+
+How does the population of a state compare to the total growth of jail population for that state? This line chart depicts that the total jail population of a state is largely correlational to the population of the state itself. For example, out of the selected states, California has the greatest overall population, thus consequently has the highest total jail population over the years. 
+
+## Race Comparison of Jail Populations
+
+```{r, echo=FALSE}
+race_compare()
+```
+
+
+_Comparison of jail populations by racial groups from the years 1970 to 2018 across the United States._
+
+
+What racial group(s) have the highest jail populations in the United States? This scatter plot shows that in general Latinx and Black race groups have had the largest population. Starting in 1985 Black and Latinx people have outnumbered the population of other racial groups in jail, and this comparison reveals a large pattern of inequality in U.S. prison systems.  
+
+## Map of Native Incarceration Rates by State
+
+```{r, echo=FALSE}
+plot_map()
+```
+
+
+_Map of the United States showing the total jail populations of Natives across different states between 1970 to 2018._
+
+
+In what states do the most Native people get incarcerated? States with the highest Native incarcerated population include Oklahoma, California, and Arizona. In general the largest population of Indigenous peoples in jail are in the Southwestern states of America. This is partly because states such as Oklahoma and California have some of the largest numbers of tribes and reservations in America. This geographical distribution shows that many Natives are subject to the oppressive and unequal prison system, even though they make up a small percentage of said states total populations.
